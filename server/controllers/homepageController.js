@@ -32,3 +32,36 @@
 
 // DELETE * FROM requests 
 // WHERE user_id = 5 and partner_id = 'whatever you clicked on'
+
+
+//Update User Information
+
+// `UPDATE users
+// SET subjects = 'JavaScript', bio = 'math'
+// WHERE user_id = 3`
+
+
+// `UPDATE users
+// SET subjects = 'JavaScript'
+// WHERE user_id = 3`
+
+
+// `UPDATE users
+// SET bio = 'English'
+// WHERE user_id = 3`
+
+
+// UPDATE "users"
+// SET bio = 'Still just some cool dude.'
+// WHERE email = 'wouldntyouliketoknow@gmail.com' AND password = 'thisisapassword'
+
+
+//Delete User
+
+// DELETE FROM "users" 
+
+// WHERE email = 'wouldntyouliketoknow@gmail.com' AND password = 'thisisapassword'
+
+// DELETE FROM users WHERE user_id = 3
+
+//SELECT firstName, lastName, 
