@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  devtool: 'eval-source-map',
+  devtool: 'eval-source-map', // What does this do?
   mode: 'development',
   devServer: {
     host: 'localhost',
@@ -31,12 +31,12 @@ module.exports = {
     // fallback to root for other url
     historyApiFallback: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-
+    // Represents express server
     proxy: {
       '/api/**': {
         target: 'http://localhost:3000/',
         secure: false,
-        changeOrigin: true
+        changeOrigin: true // What does this do?
       },
     },
   },
