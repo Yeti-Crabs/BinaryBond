@@ -9,7 +9,7 @@ router.post('/', loginController.signUp, (req, res) => {
 });
 
 
-router.get('/', loginController.signIn, (req, res) => {
+router.get('/', loginController.login, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 

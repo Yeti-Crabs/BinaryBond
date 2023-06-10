@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
-//app.use('/api', loginRouter);
+app.use('/api', loginRouter);
 
 app.use((err, req, res, next) => {
   const defaultErr = {
