@@ -1,23 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const loginController = require('../controllers/loginController');
 
 
 // route to controllers
-
-router.post('/', userController.signUp, (req, res) => {
+router.post('/', loginController.signUp, (req, res) => {
   res.status(201).json({ msg: 'Hey you signed up' });
 });
 
 
-router.get('/', userController.signIn, (req, res) => {
+router.get('/', loginController.login, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 
-router.patch('/', userController.update, (req, res) => {
-  res.status(200).json(res.locals.user);
-});
-
-router.delete('/', userController.delete, (req, res) => {
-  res.status(200).json({ msg: 'User Deleted' });
-})
+module.exports = router;

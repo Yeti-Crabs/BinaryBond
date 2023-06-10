@@ -36,7 +36,7 @@ module.exports = {
       '/api/**': {
         target: 'http://localhost:3000/',
         secure: false,
-        changeOrigin: true // What does this do?
+        //changeOrigin: true // What does this do?
       },
     },
   },
