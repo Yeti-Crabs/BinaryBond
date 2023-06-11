@@ -1,11 +1,29 @@
-// const express = require('express');
-// const router = express.Router();
-// const homepageController = require('../controllers/homepageController');
+const express = require('express');
+const router = express.Router();
+const homepageController = require('../controllers/homepageController');
 
-// router.patch('/home', homepageController.update, (req, res) => {
-//   res.status(200).json(res.locals.user);
-// });
+router.post('/home', homepageController.createRequest, (req, res) => {
+    res.status(201).json({ msg: 'Request created'})
+})
 
-// router.delete('/home', homepageController.delete, (req, res) => {
-//   res.status(200).json({ msg: 'User Deleted' });
-// })
+router.patch('/home', homepageController.update, (req, res) => {
+  res.status(200).json({ msg: 'User has been updated!' });
+});
+
+router.delete('/home', homepageController.deleteUser, (req, res) => {
+  res.status(200).json({ msg: 'User Deleted' });
+});
+
+router.delete('/home/requests', homepageController.deleteRequest, (req, res) => {
+    res.status(200).json({ msg: 'Request deleted'})
+})
+
+router.get('/home', homepageController.getAllUsers, (req, res) => {
+    res.status(200).json(res.locals.users)
+})
+
+router.get('/home/requests', homepageController.displayRequest, (req, res) => {
+  res.status(200).json(res.locals.users)
+})
+
+module.exports = router;

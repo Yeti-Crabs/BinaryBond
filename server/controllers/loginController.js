@@ -2,14 +2,17 @@ const db = require('../models/binarybond')
 
 const loginController = {};
 
+//SIGN UP//
+// INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel)
+// VALUES ('firstNameString', 'lastNameString', 'bioString', 'subjectsString', 'emailString', 'passwordString', skillLevelInteger)
+
+
 loginController.signUp = async (req, res, next) => {
   try {
       const { firstName, lastName, bio, subject, email, password } = req.body
       const skillLevel = Number(req.body.skillLevel)
       const string = `INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel) VALUES ('${firstName}', '${lastName}', '${bio}', '${subject}', '${email}', '${password}', ${skillLevel})`
-
       const response = await db.query(string);
-      
       return next();
     } catch (error) {
         next({
@@ -20,20 +23,9 @@ loginController.signUp = async (req, res, next) => {
     }
 }
 
-//SIGN UP//
-
-// INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel)
-// VALUES ('Adrian', 'Kormier', 'Just some cool dude.', 'Only frontend please', 'wouldntyouliketoknow@gmail.com', 'thisisapassword', 2)
-
-// INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel) VALUES ('$1', '$2', '$3', '$4', '$5', '$6', $7);
-
-// INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel)
-// VALUES ('Corso', 'Rosati', 'human', 'JS', 'corsodr@gmail.com', '123', 3)
-
 
 //LOGIN//
-
-// SELECT * FROM users WHERE email = 'corsodr@gmail.com' AND password = '123'
+// SELECT * FROM users WHERE email = 'emailString' AND password = 'passwordString'
 
 loginController.login = async (req, res, next) => {
     try {
