@@ -2,11 +2,10 @@ const db = require('../models/binarybond')
 
 const loginController = {};
 
-//SIGN UP//
+/////////////
+// SIGN UP //
 // INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel)
 // VALUES ('firstNameString', 'lastNameString', 'bioString', 'subjectsString', 'emailString', 'passwordString', skillLevelInteger)
-
-
 loginController.signUp = async (req, res, next) => {
   try {
       const { firstName, lastName, bio, subject, email, password } = req.body
@@ -23,10 +22,9 @@ loginController.signUp = async (req, res, next) => {
     }
 }
 
-
-//LOGIN//
+///////////
+// LOGIN //
 // SELECT * FROM users WHERE email = 'emailString' AND password = 'passwordString'
-
 loginController.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;

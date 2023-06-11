@@ -6,11 +6,7 @@ const PG_URI = 'postgres://njmwtnlq:FDWmFtgTtYwhMKLIytNyujqDKJfn4nEd@mahmud.db.e
 const pool = new Pool({
   connectionString: PG_URI
 });
-// const fetch = async () => {
-//   const response = await pool.query('SELECT * FROM users');
-//   console.log(response);
-// };
-// fetch();
+
 module.exports = {
   query: (text, params, callback) => {
     console.log('executed query', text);
