@@ -4,7 +4,6 @@ const homepageController = {}
 
 ////////////////////////////
 // SELECT all other users //
-
 homepageController.getAllUsers = async (req,res,next) => {
   try {
     const {user_id} = req.body
