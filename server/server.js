@@ -5,6 +5,7 @@ const app = express();
 const PORT = 3000;
 
 const loginRouter = require('./routes/login.js');
+const homepageRouter = require('./routes/homepage')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +15,7 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
-app.use('/api', loginRouter);
+app.use('/api', loginRouter, homepageRouter);
 
 app.use((err, req, res, next) => {
   const defaultErr = {
