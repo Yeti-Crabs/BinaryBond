@@ -4,19 +4,6 @@ const homepageController = {}
 
 ////////////////////////////
 // SELECT all other users //
-//STRING = SELECT (firstName, lastName, bio, subjects, skillLevel) FROM users WHERE user_id != ${user_id}
-// SELECT
-// firstName, lastName, bio, subjects, skillLevel
-// FROM
-//     users
-// WHERE NOT EXISTS (
-//     SELECT user_id, partner_id
-//     FROM
-//         requests
-//     WHERE
-//         user_id = ${user_id) AND
-//         
-// )
 
 homepageController.getAllUsers = async (req,res,next) => {
   try {
@@ -54,52 +41,28 @@ homepageController.createRequest = async (req,res,next)=>{
 }
 
 //Who you want to work with/ Who wants to work with you
-
 homepageController.displayRequest = async (req,res,next) => {
-try {
-  const {user_id} = req.body
-  const wantToWorkWith = `SELECT partner_id FROM requests WHERE user_id = ${user_id}`
-  const wantsToWorkWithYOU = `SELECT partner_id FROM requests WHERE partner_id = ${user_id}`
-  const response1 = await db.query(wantToWorkWith)
-  const response2 = await db.query(wantsToWorkWithYOU)
-  res.locals.users = { wantToWorkWith: response1, wantsToWorkWithYOU: response2};
-  return next()
-} catch (error) {
-  next({
-    log: 'Express error handler caught error in displayRequest middleware',
-    status: 400,
-    message: { err: 'An error occurred in displayRequest middleware' },
-    })
+  try {
+    const {user_id} = req.body
+    const wantToWorkWith = `SELECT DISTINCT users.* FROM users INNER JOIN requests ON requests.partner_id = users.user_id AND requests.user_id = ${ user_id }`
+    const wantsToWorkWithYOU = `SELECT DISTINCT users.* FROM users INNER JOIN requests ON requests.user_id = users.user_id AND requests.partner_id =${ user_id }`
+    const response1 = await db.query(wantToWorkWith)
+    const response2 = await db.query(wantsToWorkWithYOU)
+    res.locals.users = { wantToWorkWith: response1.rows, wantsToWorkWithYOU: response2.rows};
+    return next()
+  } catch (error) {
+    next({
+      log: 'Express error handler caught error in displayRequest middleware',
+      status: 400,
+      message: { err: 'An error occurred in displayRequest middleware' },
+      })
+  }
 }
-
-
-// {incoming:{},outgoing:{}}
-}
-
-// homepageController.displayOutgoingRequest = async (req,res,next)=>{
-//   const {user_id} = req
-
-
-
-
-
-// }
-
-// who you want to work with 
-//SELECT partner_id FROM requests WHERE user_id = 6
-// get relevant info from user table, possibly use join 
-
-// who wants to work with you
-// SELECT user_id FROM requests WHERE partner_id = 6
-// get relevant info from user table
-
-// use request_id to form a url link to csbin.io/binarybond${request_id}
-
 
 /////////////////////
 // Delete requests //
 // DELETE * FROM requests 
-// WHERE user_id = 5 and partner_id = 'whatever you clicked on'
+// WHERE user_id = currentUser_id and partner_id = 'whatever you clicked on'
 homepageController.deleteRequest = async (req, res, next) => {
     try {
         const { user_id, partner_id } = req.body;
