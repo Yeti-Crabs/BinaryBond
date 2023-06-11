@@ -9,7 +9,7 @@ router.post('/', loginController.signUp, (req, res) => {
 });
 
 // route to login middleware upon receiving get request to /api
-router.get('/', loginController.login, (req, res) => {
+router.post('/login', loginController.login, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 

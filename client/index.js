@@ -3,8 +3,9 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { createRoot } from 'react-dom/client';
-import { store} from './store'
-import {Provider} from 'react-redux'
+import { store } from './store';
+//Allows state to persist through entirety ⬇
+import { Provider } from 'react-redux';
 
 
 import './stylesheets/styles.css';
