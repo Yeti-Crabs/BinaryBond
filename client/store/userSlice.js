@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// default state
 const initialState = {
   user_id: '44',
   firstname: 'greg',
@@ -14,7 +15,9 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    // login and update are action creators 
     login: (state, action) => {
+      // overwrite state with action payload 
       return { ...state, ...action.payload };
     },
     update: (state, action) => {
