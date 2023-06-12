@@ -11,7 +11,7 @@ const Homepage = () => {
   const user = useSelector((state) => state.user);
   console.log(user);
   return (
-    <div>
+    <div className='homepage'>
       <h1>Homepage</h1>
       <div className='container'>
         <UserProfile />

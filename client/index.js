@@ -8,7 +8,7 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 
 
-import './stylesheets/styles.css';
+import './stylesheets/styles.scss';
 import './stylesheets/reactToastify.css';
 import './stylesheets/cubeSlider.css';
 import './stylesheets/awesomeSlider.css';

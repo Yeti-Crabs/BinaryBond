@@ -57,7 +57,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className='signUpPage'>
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -71,7 +71,7 @@ const Signup = () => {
         theme="light"
       />
       <h1>Signup</h1>
-      <form onSubmit={formSubmission}>
+      <form id='signUpFields' onSubmit={formSubmission}>
         <TextField
           label="First Name"
           onChange={e => setFirstName(e.target.value)}
@@ -79,7 +79,10 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
           size='medium'
           value={firstName}
 
@@ -91,7 +94,10 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
           size='medium'
           value={lastName}
 
@@ -104,7 +110,10 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="email"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
           size='medium'
           value={email}
 
@@ -119,7 +128,10 @@ const Signup = () => {
           value={password}
 
           size='medium'
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
         />
         <TextField
           label="Subject"
@@ -128,7 +140,10 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
           size='medium'
           value={subject}
 
@@ -140,7 +155,10 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
           size='medium'
           value={bio}
         />
@@ -155,8 +173,16 @@ const Signup = () => {
           marks
           min={1}
           max={5}
+          sx={{ width: 300,
+                  }}
         />
-        <Button variant="outlined" color="secondary" type="submit">Submit</Button>
+        <Button 
+        variant="outlined" 
+        color="secondary" 
+        type="submit"
+        sx={{ color: 'rgb(240, 240, 240)',
+        backgroundColor: '#9c27b0'}}>
+        Submit</Button>
       </form>
       {submitSuccess && <Navigate to="/" />}
     </div>

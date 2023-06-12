@@ -6,7 +6,7 @@ import Homepage from './components/Homepage'
 import Login from './components/Login'
 import Signup from './components/Signup'
 
-import './stylesheets/styles.css';
+import './stylesheets/styles.scss';
 import './stylesheets/awesomeSlider.css';
 import './stylesheets/cubeSlider.css';
 import './stylesheets/reactToastify.css'
