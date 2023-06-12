@@ -9,6 +9,9 @@ import { Provider } from 'react-redux';
 
 
 import './stylesheets/styles.css';
+import './stylesheets/reactToastify.css';
+import './stylesheets/cubeSlider.css';
+import './stylesheets/awesomeSlider.css';
 
 
 const root = createRoot(document.getElementById('root'));
