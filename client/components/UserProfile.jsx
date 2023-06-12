@@ -127,19 +127,18 @@ const UserProfile = () => {
           <div>
             <h3>{name}</h3>
           </div>
-          <div>
-            <h4>Email</h4>
-            <h5>{user.email}</h5>
+          <div className='userInfo'>
+            <h4>Email: </h4>
+            <h4>{user.email}</h4>
           </div>
-          <div>
-            <h3>Bio</h3>
+          <div className='userInfo'>
+            <h3>Bio:</h3>
             <h5>{user.bio}</h5>
           </div>
-          <div>
-            <h3>Subjects</h3>
+          <div className='userInfo'>
+            <h3>Subjects:</h3>
             <h5>{user.subjects}</h5>
-            <h3>Skill level</h3>
-            <h1>{user.skilllevel}</h1>
+            <h3>Skill level: {user.skilllevel}</h3>
           </div>
         </div>
         <div id='logoutDelete'>
