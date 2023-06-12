@@ -25,7 +25,7 @@ const Signup = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'light',
+      theme: 'dark',
     });
   };
 
@@ -79,10 +79,12 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3, 
+          sx={{
+            mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)'
+          }}
           size='medium'
           value={firstName}
 
@@ -94,10 +96,12 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3, 
+          sx={{
+            mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)'
+          }}
           size='medium'
           value={lastName}
 
@@ -110,10 +114,12 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="email"
-          sx={{ mb: 3, 
+          sx={{
+            mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)'
+          }}
           size='medium'
           value={email}
 
@@ -128,10 +134,12 @@ const Signup = () => {
           value={password}
 
           size='medium'
-          sx={{ mb: 3, 
+          sx={{
+            mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)'
+          }}
         />
         <TextField
           label="Subject"
@@ -140,10 +148,12 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3, 
+          sx={{
+            mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)'
+          }}
           size='medium'
           value={subject}
 
@@ -155,10 +165,12 @@ const Signup = () => {
           variant="outlined"
           color="secondary"
           type="text"
-          sx={{ mb: 3, 
+          sx={{
+            mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)'
+          }}
           size='medium'
           value={bio}
         />
@@ -173,16 +185,19 @@ const Signup = () => {
           marks
           min={1}
           max={5}
-          sx={{ width: 300,
-                  }}
+          sx={{
+            width: 300,
+          }}
         />
-        <Button 
-        variant="outlined" 
-        color="secondary" 
-        type="submit"
-        sx={{ color: 'rgb(240, 240, 240)',
-        backgroundColor: '#9c27b0'}}>
-        Submit</Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          type="submit"
+          sx={{
+            color: 'rgb(240, 240, 240)',
+            backgroundColor: '#9c27b0'
+          }}>
+          Submit</Button>
       </form>
       {submitSuccess && <Navigate to="/" />}
     </div>

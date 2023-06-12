@@ -11,7 +11,7 @@ import { Button, IconButton } from '@mui/material';
 import { useState } from 'react';
 import { update, login } from '../store/userSlice';
 import { Navigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const UserProfile = () => {
   const user = useSelector((state) => state.user)
@@ -20,6 +20,33 @@ const UserProfile = () => {
   const [bio, setBio] = useState('')
   const [subjects, setSubjects] = useState('')
   const [logdel, setlogdel] = useState(false)
+
+  const displayEdit = () => {
+    toast.success('🙂  Succesfull Edit!! 🙂 ', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+  };
+
+  const displayDelete = () => {
+    toast.error('😿 User Deleted😿 ', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
+
 
   console.log(user)
   const name = user.firstname + ' ' + user.lastname
@@ -48,6 +75,7 @@ const UserProfile = () => {
         body: JSON.stringify(body)
       });
       if (response.ok) {
+        displayEdit()
         console.log('Data updated successfully')
       }
       dispatch(update(body))
@@ -68,7 +96,10 @@ const UserProfile = () => {
         body: JSON.stringify(body)
       });
       if (response.ok) {
-        setlogdel(true)
+        displayDelete()
+        setTimeout(() => {
+          setlogdel(true);
+        }, 3000);
         console.log('User deleted successfully')
       }
     }

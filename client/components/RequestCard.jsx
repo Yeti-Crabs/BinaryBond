@@ -9,10 +9,24 @@ import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { IconButton } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { ToastContainer, toast } from 'react-toastify';
 
-
-const RequestCard = ({ email, firstname, lastname, user_id,subjects,request_id }) => {
+const RequestCard = ({ email, firstname, lastname, user_id, subjects, request_id }) => {
   const user = useSelector((state) => state.user)
+
+  const displayDeleteRequest = () => {
+    toast.success('😈 Successfull Delete😈 ', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+  };
+
 
   const deleteRequest = async () => {
     const body = {
@@ -28,6 +42,7 @@ const RequestCard = ({ email, firstname, lastname, user_id,subjects,request_id }
         body: JSON.stringify(body)
       });
       if (response.ok) {
+        displayDeleteRequest()
         console.log('Request deleted successfully')
       }
     }
@@ -35,11 +50,11 @@ const RequestCard = ({ email, firstname, lastname, user_id,subjects,request_id }
       console.log(error)
     }
   }
-  
+
 
   return (
     <div>
-    <ListItem alignItems="flex-start">
+      <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src="https://qotoqot.com/sad-animations/img/400/emotional_eating/emotional_eating.png" />
         </ListItemAvatar>
@@ -61,7 +76,7 @@ const RequestCard = ({ email, firstname, lastname, user_id,subjects,request_id }
                 variant="body2"
                 color="text.primary"
               >
-              {subjects}
+                {subjects}
               </Typography>
               <Typography
                 sx={{ display: 'inline' }}
@@ -69,18 +84,18 @@ const RequestCard = ({ email, firstname, lastname, user_id,subjects,request_id }
                 variant="body2"
                 color="text.primary"
               >
-              {`csbin.io/binarybond/${request_id}`}
+                {`csbin.io/binarybond/${request_id}`}
               </Typography>
-              
+
             </React.Fragment>
           }
         />
         <IconButton style={{ width: '30px', height: '30px' }} onClick={deleteRequest}>
-            <DeleteForeverIcon />
-          </IconButton>
+          <DeleteForeverIcon />
+        </IconButton>
       </ListItem>
       <Divider variant="inset" component="li" />
-      </div>
+    </div>
   )
 }
 

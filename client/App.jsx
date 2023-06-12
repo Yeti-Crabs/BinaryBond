@@ -1,6 +1,6 @@
 import React from 'react';
+// makes it possible to render components based on path
 import { Route, Routes } from 'react-router-dom';
-//import { Homepage, Login, Signup } from './components/'
 
 import Homepage from './components/Homepage'
 import Login from './components/Login'
@@ -11,6 +11,8 @@ import './stylesheets/awesomeSlider.css';
 import './stylesheets/cubeSlider.css';
 import './stylesheets/reactToastify.css'
 
+// render components based on path
+// see navigate elements in Login and Signup files 
 function App() {
   return (
     <div>
