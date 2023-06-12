@@ -34,6 +34,14 @@ homepageController.createRequest = async (req, res, next) => {
     WHERE user_id = ${user_id} AND partner_id = ${partner_id}
     )`;
     const response = await db.query(string);
+    console.log(response.rowCount)
+    if (response.rowCount === 0) {
+      next({
+        log: 'Create request, user has already been requested',
+        status: 400,
+        message: { err: 'An error occurred in createRequest middleware,user has been requested' },
+      })
+    }
     return next();
   } catch (error) {
     return next({
@@ -91,7 +99,9 @@ homepageController.deleteRequest = async (req, res, next) => {
 // WHERE user_id = user_idSerial`
 homepageController.update = async (req, res, next) => {
   try {
-    const { user_id, bio, subjects } = req.body;
+    const { user_id } = req.body;
+    const bio = req.body.bio.replace('\'', '\'\'');
+    const subjects = req.body.subjects.replace('\'', '\'\'');
     const string = `UPDATE users SET bio = '${bio}', subjects = '${subjects}' WHERE user_id = ${user_id}`;
     const response = await db.query(string);
     return next();
