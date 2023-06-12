@@ -19,7 +19,7 @@ const Signup = () => {
   const displayNotification = () => {
     toast('😇 Successful Signup 😇', {
       position: 'top-center',
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -60,7 +60,7 @@ const Signup = () => {
     <div>
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

@@ -9,8 +9,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-
 const Login = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submitSuccess, setSubmitSuccess] = useState(false)
@@ -19,7 +19,7 @@ const Login = () => {
   const displayNotification = () => {
     toast.success('🦀 🦀 🦀 🦀 Succesfull Login!!🦀 🦀 🦀 🦀 ', {
       position: 'top-center',
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -58,6 +58,18 @@ const Login = () => {
     <div>
       <h1>Login</h1>
       <form onSubmit={formSubmission}>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <TextField
           label="Email"
           onChange={e => setEmail(e.target.value)}
@@ -83,7 +95,7 @@ const Login = () => {
           sx={{ mb: 3 }}
         />
         <div>
-          <Button variant="outlined" color="secondary" type="submit">Submit</Button>
+          <Button variant="outlined" color="secondary" type="submit">Log In</Button>
           <Button variant="outlined" color="secondary" onClick={() => setSignup(true)} type="button">SignUp</Button>
         </div>
       </form>
