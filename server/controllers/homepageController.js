@@ -7,7 +7,7 @@ const homepageController = {};
 homepageController.getAllUsers = async (req, res, next) => {
   try {
     const { user_id } = req.body;
-    const string = `SELECT firstName, lastName, bio, subjects, skillLevel FROM users WHERE user_id != ${user_id}`;
+    const string = `SELECT user_id, firstName, lastName, bio, subjects, skillLevel, email FROM users WHERE user_id != ${user_id}`;
     const response = await db.query(string);
     res.locals.users = response.rows;
     return next();
@@ -21,13 +21,18 @@ homepageController.getAllUsers = async (req, res, next) => {
 };
 
 
+
 ///////////////////////////////////////////////
 // Click on check mark to create request row //
 homepageController.createRequest = async (req, res, next) => {
   try {
     const { user_id, partner_id } = req.body;
     const string = `INSERT INTO requests (user_id, partner_id)
-    VALUES (${user_id}, ${partner_id}) WHERE user_id != ${user_id} AND partner_id != ${partner_id}`;
+    SELECT ${user_id}, ${partner_id}
+    WHERE NOT EXISTS (
+    SELECT 1 FROM requests
+    WHERE user_id = ${user_id} AND partner_id = ${partner_id}
+    )`;
     const response = await db.query(string);
     return next();
   } catch (error) {
