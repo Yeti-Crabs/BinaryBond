@@ -30,6 +30,15 @@ loginController.login = async (req, res, next) => {
     const { email, password } = req.body;
     const string = `SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`;
     const response = await db.query(string);
+    // console.log('i am req.body',req.body)
+    // console.log('i am response.rows[0]',response.rows[0])
+    if (email !== response.rows[0].email && password !== response.rows[0].password){
+      return next({
+        log: `Username or password does not match, ${error}`,
+        status: 400,
+        message: { err: `Username or password does not match: ${error}` },
+      })
+    }
     res.locals.user = response.rows[0];
     return next();
   } catch (error) {

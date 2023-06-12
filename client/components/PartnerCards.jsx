@@ -24,8 +24,8 @@ const body = {user_id: user.user_id}
     if (response.ok) {
       const data = await response.json()
       setAllUsers(data)
-      console.log('We have got all the users')
-      
+       console.log('We have got all the users')
+     
     }
     
   } catch (error) {
@@ -37,7 +37,7 @@ useEffect(()=>{
 },[])
 
 console.log(allusers)
-const users = allusers.map((user, i) => <div><Card key={i} {...user} /></div>)
+const users = allusers.map((user, i) => <div key={i}><Card key={i} {...user} /></div>)
 
 return (
     <div>

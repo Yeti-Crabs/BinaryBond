@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const homepageController = require('../controllers/homepageController');
 
+// routes to homepageController for requests to /api
 router.post('/home', homepageController.createRequest, (req, res) => {
     res.status(201).json({ msg: 'Request created'})
 })
@@ -22,7 +23,7 @@ router.post('/home/getallusers', homepageController.getAllUsers, (req, res) => {
     res.status(200).json(res.locals.users)
 })
 
-router.get('/home/requests', homepageController.displayRequest, (req, res) => {
+router.post('/home/requests', homepageController.displayRequest, (req, res) => {
   res.status(200).json(res.locals.users)
 })
 

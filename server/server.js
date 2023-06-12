@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
+// routers for login page and homepage 
 app.use('/api', loginRouter, homepageRouter);
 
 app.use((err, req, res, next) => {
