@@ -149,16 +149,19 @@ const Signup = () => {
 
         />
         <TextField
+          id="outlined-multiline-static"
           label="Bio"
           onChange={e => setBio(e.target.value)}
           required
+          multiline
           variant="outlined"
           color="secondary"
           type="text"
           sx={{ mb: 3, 
             border: '1px, solid, white',
             borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'}}
+            backgroundColor: 'rgb(240, 240, 240)',
+            }}
           size='medium'
           value={bio}
         />

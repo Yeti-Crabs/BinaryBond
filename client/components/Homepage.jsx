@@ -54,11 +54,12 @@ useEffect(()=>{
 
   return (
     <div className='homepage'>
-      <h1>Homepage</h1>
+      <span><h1 id='title'>Binary<h1 id='bond'>Bond</h1></h1></span>
       <div className='container'>
+        
         <UserProfile />
         <PartnerCards />
-        <div className="requests">
+        <div id="requests">
          {received && <IncomingRequests requests={requests.wantToWorkWith}/>} 
          {received && <OutgoingRequests requests={requests.wantsToWorkWithYOU}/>} 
           

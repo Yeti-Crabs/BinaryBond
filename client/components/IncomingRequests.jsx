@@ -7,8 +7,8 @@ const IncomingRequests = ({ requests }) => {
 
 
   return (
-    <div>
-      <h3>Incoming Requests</h3>
+    <div id='incomingRequests'>
+      <h2>Incoming Requests</h2>
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         {requests.map((request,i)=><RequestCard key={i} {...request}/>)}
       </List>

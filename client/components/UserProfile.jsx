@@ -125,28 +125,28 @@ const UserProfile = () => {
         </div>
         <div>
           <div>
-            <h3>{name}</h3>
+            <h2>{name}</h2>
           </div>
           <div className='userInfo'>
-            <h4>Email: </h4>
-            <h4>{user.email}</h4>
+            <h3>Email:</h3>
+            <p>{user.email}</p>
           </div>
           <div className='userInfo'>
             <h3>Bio:</h3>
-            <h5>{user.bio}</h5>
+            <p>{user.bio}</p>
           </div>
           <div className='userInfo'>
             <h3>Subjects:</h3>
-            <h5>{user.subjects}</h5>
+            <p>{user.subjects}</p>
             <h3>Skill level: {user.skilllevel}</h3>
           </div>
         </div>
-        <div id='logoutDelete'>
+      </div>
+      <div id='logoutDelete'>
           <Button id='logout' variant="contained" onClick={logout} >Logout</Button>
-          <Button variant="contained" onClick={deleteUser} color="error">Delete Profile</Button>
+          <Button id='delete' variant="contained" onClick={deleteUser} color="error">Delete Profile</Button>
           {logdel && <Navigate to="/" />}
         </div>
-      </div>
     </div>
   )
 }
