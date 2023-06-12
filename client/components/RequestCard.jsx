@@ -1,0 +1,71 @@
+import React from 'react'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
+import { IconButton } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
+
+const RequestCard = ({ email, firstname, lastname, user_id,subjects }) => {
+  const user = useSelector((state) => state.user)
+
+  const deleteRequest = async () => {
+    const body = {
+      user_id: user.user_id,
+      partner_id: user_id
+    }
+    try {
+      const response = await fetch('/api/home/requests', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      if (response.ok) {
+        console.log('Request deleted successfully')
+      }
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+  
+
+  return (
+    <div>
+    <ListItem alignItems="flex-start">
+        <ListItemAvatar>
+          <Avatar alt="Remy Sharp" src="https://qotoqot.com/sad-animations/img/400/emotional_eating/emotional_eating.png" />
+        </ListItemAvatar>
+        <ListItemText
+          primary={`${firstname} ${lastname}`}
+          secondary={
+            <React.Fragment>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+              >
+                {email}
+              </Typography>
+              {subjects}
+            </React.Fragment>
+          }
+        />
+        <IconButton style={{ width: '30px', height: '30px' }} onClick={deleteRequest}>
+            <DeleteForeverIcon />
+          </IconButton>
+      </ListItem>
+      <Divider variant="inset" component="li" />
+      </div>
+  )
+}
+
+export default RequestCard

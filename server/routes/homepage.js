@@ -22,7 +22,7 @@ router.post('/home/getallusers', homepageController.getAllUsers, (req, res) => {
     res.status(200).json(res.locals.users)
 })
 
-router.get('/home/requests', homepageController.displayRequest, (req, res) => {
+router.post('/home/requests', homepageController.displayRequest, (req, res) => {
   res.status(200).json(res.locals.users)
 })
 
