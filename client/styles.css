@@ -1,0 +1,7 @@
+/* Basic Layout for grid container. 20% left, 60% mid, 20% right. Two rows sharing half the available space each.
+/* .container {
+  display: grid;
+  height: 100vh; /* Takes full viewport height
+  grid-template-rows: 1fr 1fr; Creates two rows of equal size
+  grid-template-columns: 20% 60% 20%; Creates three columns where the middle one is 60% of the total width
+}  */
