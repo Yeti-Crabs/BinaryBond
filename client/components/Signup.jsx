@@ -48,7 +48,7 @@ const Signup = () => {
         displayNotification();
         setTimeout(() => {
           setSubmitSuccess(true);
-        }, 6000);
+        }, 3000);
         console.log('Data inserted successfully');
       }
     } catch (error) {

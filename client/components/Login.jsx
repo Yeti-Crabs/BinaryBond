@@ -11,11 +11,10 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const dispatch = useDispatch();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [signup, setSignup] = useState(false)
 
   const displayNotification = () => {
     toast.success('🦀 🦀 🦀 🦀 Succesfull Login!!🦀 🦀 🦀 🦀 ', {
@@ -31,8 +30,8 @@ const Login = () => {
   };
 
   const formSubmission = async (event) => {
-    event.preventDefault();
-    const body = { email, password };
+    event.preventDefault()
+    const body = { email, password }
     try {
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -45,7 +44,7 @@ const Login = () => {
         displayNotification();
         setTimeout(() => {
           setSubmitSuccess(true);
-        }, 6000);
+        }, 3000);
         console.log('Login successfully');
       }
       const data = await response.json();
@@ -58,18 +57,6 @@ const Login = () => {
   return (
     <div>
       <h1>Login</h1>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <form onSubmit={formSubmission}>
         <TextField
           label="Email"
@@ -95,8 +82,12 @@ const Login = () => {
           size='medium'
           sx={{ mb: 3 }}
         />
-        <Button variant="outlined" color="secondary" type="submit">Submit</Button>
+        <div>
+          <Button variant="outlined" color="secondary" type="submit">Submit</Button>
+          <Button variant="outlined" color="secondary" onClick={() => setSignup(true)} type="button">SignUp</Button>
+        </div>
       </form>
+      {signup && <Navigate to="/signup" />}
       {submitSuccess && <Navigate to="/homepage" />}
     </div>
   );
