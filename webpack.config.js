@@ -52,7 +52,7 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'sass-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg|ico)$/,
