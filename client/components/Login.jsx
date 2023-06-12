@@ -19,7 +19,7 @@ const Login = () => {
   const displayNotification = () => {
     toast.success('🦀 🦀 🦀 🦀 Succesfull Login!!🦀 🦀 🦀 🦀 ', {
       position: 'top-center',
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -29,6 +29,18 @@ const Login = () => {
     });
   };
 
+  const displayError = ()=>{
+    toast.error('Incorrect Username or Password', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
   const formSubmission = async (event) => {
     event.preventDefault()
     const body = { email, password }
@@ -40,12 +52,15 @@ const Login = () => {
         },
         body: JSON.stringify(body)
       });
+
       if (response.ok) {
         displayNotification();
         setTimeout(() => {
           setSubmitSuccess(true);
         }, 3000);
         console.log('Login successfully');
+      } else {
+        displayError()
       }
       const data = await response.json();
       dispatch(login(data));

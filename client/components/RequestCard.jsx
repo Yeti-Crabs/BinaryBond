@@ -11,7 +11,7 @@ import { IconButton } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
-const RequestCard = ({ email, firstname, lastname, user_id,subjects }) => {
+const RequestCard = ({ email, firstname, lastname, user_id,subjects,request_id }) => {
   const user = useSelector((state) => state.user)
 
   const deleteRequest = async () => {
@@ -55,7 +55,23 @@ const RequestCard = ({ email, firstname, lastname, user_id,subjects }) => {
               >
                 {email}
               </Typography>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+              >
               {subjects}
+              </Typography>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+              >
+              {`csbin.io/binarybond/${request_id}`}
+              </Typography>
+              
             </React.Fragment>
           }
         />

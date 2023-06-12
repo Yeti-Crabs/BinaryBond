@@ -37,7 +37,7 @@ useEffect(()=>{
 },[])
 
 console.log(allusers)
-const users = allusers.map((user, i) => <div><Card key={i} {...user} /></div>)
+const users = allusers.map((user, i) => <div key={i}><Card key={i} {...user} /></div>)
 
 return (
     <div>

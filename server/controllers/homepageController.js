@@ -44,15 +44,17 @@ homepageController.createRequest = async (req, res, next) => {
   }
 };
 
-//Who you want to work with/ Who wants to work with you
+///////////////////////////////////////////////
+// Display who you want to work with (outgoing requests) and 
+// who wants to work with you (incoming requests)
 homepageController.displayRequest = async (req, res, next) => {
   try {
     const { user_id } = req.body;
-    const wantToWorkWith = `SELECT DISTINCT users.* FROM users INNER JOIN requests ON requests.partner_id = users.user_id AND requests.user_id = ${user_id}`;
-    const wantsToWorkWithYOU = `SELECT DISTINCT users.* FROM users INNER JOIN requests ON requests.user_id = users.user_id AND requests.partner_id =${user_id}`;
-    const response1 = await db.query(wantToWorkWith);
-    const response2 = await db.query(wantsToWorkWithYOU);
-    res.locals.users = { wantToWorkWith: response1.rows, wantsToWorkWithYOU: response2.rows };
+    const wantsToWorkWithYOU = `SELECT DISTINCT users.*, requests.request_id FROM users INNER JOIN requests ON requests.partner_id = users.user_id AND requests.user_id = ${user_id}`;
+    const wantToWorkWith = `SELECT DISTINCT users.*, requests.request_id FROM users INNER JOIN requests ON requests.user_id = users.user_id AND requests.partner_id =${user_id}`;
+    const response1 = await db.query(wantsToWorkWithYOU);
+    const response2 = await db.query(wantToWorkWith);
+    res.locals.users = { wantToWorkWith: response2.rows, wantsToWorkWithYOU: response1.rows };
     return next();
   } catch (error) {
     next({
@@ -70,7 +72,7 @@ homepageController.displayRequest = async (req, res, next) => {
 homepageController.deleteRequest = async (req, res, next) => {
   try {
     const { user_id, partner_id } = req.body;
-    const string = `DELETE FROM requests WHERE user_id = '${user_id}' AND partner_id = '${partner_id}'`;
+    const string = `DELETE FROM requests WHERE user_id = '${user_id}' AND partner_id = '${partner_id}' OR user_id = '${partner_id}' AND partner_id = '${user_id}'`;
     const response = await db.query(string);
     return next();
   }

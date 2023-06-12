@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const homepageController = require('../controllers/homepageController');
 
+// routes to homepageController for requests to /api
 router.post('/home', homepageController.createRequest, (req, res) => {
     res.status(201).json({ msg: 'Request created'})
 })
