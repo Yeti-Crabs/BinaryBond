@@ -1,26 +1,41 @@
-import React from 'react'
+import React from 'react';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
-import { Navigate } from "react-router-dom";
-
+import { Navigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Signup = () => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [bio, setBio] = useState('')
-  const [subject, setSubject] = useState('')
-  const [skillLevel, setSkillLevel] = useState(1)
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [bio, setBio] = useState('');
+  const [subject, setSubject] = useState('');
+  const [skillLevel, setSkillLevel] = useState(1);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const displayNotification = () => {
+    toast('😇 Successful Signup 😇', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+  };
+
+
 
   // Send a post request to DB
   // Redirect user to 
   const formSubmission = async (event) => {
-    event.preventDefault()
-    const body = { firstName, lastName, bio, subject, email, password, skillLevel }
+    event.preventDefault();
+    const body = { firstName, lastName, bio, subject, email, password, skillLevel };
     try {
       const response = await fetch('/api/', {
         method: 'POST',
@@ -30,16 +45,31 @@ const Signup = () => {
         body: JSON.stringify(body)
       });
       if (response.ok) {
-        setSubmitSuccess(true);
-        console.log('Data inserted successfully')
+        displayNotification();
+        setTimeout(() => {
+          setSubmitSuccess(true);
+        }, 6000);
+        console.log('Data inserted successfully');
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <h1>Signup</h1>
       <form onSubmit={formSubmission}>
         <TextField
@@ -130,7 +160,7 @@ const Signup = () => {
       </form>
       {submitSuccess && <Navigate to="/" />}
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
