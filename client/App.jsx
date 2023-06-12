@@ -9,6 +9,7 @@ import Signup from './components/Signup'
 import './stylesheets/styles.css';
 import './stylesheets/awesomeSlider.css';
 import './stylesheets/cubeSlider.css';
+import './stylesheets/reactToastify.css'
 
 function App() {
   return (
