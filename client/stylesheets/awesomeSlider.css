@@ -225,6 +225,7 @@
       text-indent: -9999px;
       overflow: hidden;
       cursor: pointer;
+      opacity: 0;
       border: none;
       -webkit-transition: background-color 0.175s ease-out, -webkit-transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45);
       transition: background-color 0.175s ease-out, -webkit-transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45);

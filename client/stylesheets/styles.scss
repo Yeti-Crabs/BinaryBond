@@ -18,17 +18,23 @@ body {
   flex-direction: row;
   justify-content: center;
   background-color: $background;
+  margin-top: 15rem;
 }
 
 
 .homepage {
   flex-direction: row;
+  max-height: 55rem;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 #title {
   display:flex;
-  padding-top: 15rem;
+  // padding-top: 15rem;
   justify-content: center;
+  margin-bottom: -3rem;
+  margin-top: -.4rem;
 }
 
 #bond {
@@ -66,28 +72,29 @@ body {
 .container{
     display: grid;
     background-color: lighten($background, 10%);
-    border:1px solid rgb(196, 196, 196);
-    grid-template-columns: .12fr .75fr .20fr;
-    height: 50rem;
+    border:1px solid rgb(168, 0, 146);
+    grid-template-columns: .18fr .90fr .14fr;
+    height: 45rem;
 }
 
 .cards {
   display: flex;
   flex-direction: column;
-  border: 4px solid rgba(216, 216, 216, 0.568);
+  border: 4px solid rgba(150, 0, 130, 0.705);
   border-radius: 2px;
-  background-color: lighten($background, 10%);
+  background-color: rgb(49, 49, 49);
   align-items: center;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 60rem;
-  height: 30rem;
+  height: 35rem;
 }
 
 #userProfile {
   box-shadow: rgba(44, 44, 44, 0.25) 0px 30px 60px -12px inset, rgb(0, 0, 0) 0px 18px 36px -10px inset;
   // border: 1px solid rgba(109, 1, 1, 0.568);
-  
+  overflow-x: hidden;
+  min-width: 12rem;
   div {
     max-height: 49rem;
     display: flex;
@@ -98,20 +105,45 @@ body {
     justify-content: space-between;
     overflow-y: hidden;
     .userInfo {
-      margin-bottom: -20px;
+      margin-bottom: -10%;
     }
-    #logoutDelete {
     
-
-      margin-bottom: 1rem;
-      #logout  {
-        width: 100%;
-      }
     }
   }
 
+  #logoutDelete {
+    position: absolute;
+    bottom: 5rem;
+    // border: 4px solid rgba(150, 0, 130, 0.705);
+    max-width: 90%;
+    margin-left: 5rem;
+    // margin-right: 2rem;
+    width: 12rem;
+    height: 5rem;
+    #logout {
+      width: 90%
+    }
+    #delete {
+      width: 90%
+    }
+  }
 
+#requests {
+  #incomingRequests {
+    overflow-y: scroll;
+    height: 20rem;
+  }
+  #outgoingRequests {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 20rem;
+
+  }
+  #outgoingdiv {
+    // overflow-y: scroll;
+  }
 }
+
  .MuiSlider-thumb {
   color: lighten($accent, 20%)
 }
@@ -119,6 +151,8 @@ body {
 .awssld__content {
 }
 
+h3 {
+  margin-bottom: -1rem;
+}
 
-  
 
