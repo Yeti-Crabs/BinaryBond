@@ -8,11 +8,12 @@ import { store } from './store';
 // makes Redux store avaialable to all components:
 import { Provider } from 'react-redux';
 
-import './stylesheets/styles.css';
+
+
+import './stylesheets/styles.scss';
 import './stylesheets/reactToastify.css';
 import './stylesheets/cubeSlider.css';
 import './stylesheets/awesomeSlider.css';
-
 
 const root = createRoot(document.getElementById('root'));
 root.render(

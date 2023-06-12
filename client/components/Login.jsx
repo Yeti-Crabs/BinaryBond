@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../store/userSlice';
 import { ToastContainer, toast } from 'react-toastify';
+import { BorderAllRounded } from '@mui/icons-material';
+import { createTheme, rgbToHex } from '@mui/material/styles';
 
 
 
@@ -70,8 +72,10 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='loginContainer'>
+    <div className='loginPage'>
+      <span><h1 id='title'>Binary<h1 id='bond'>Bond</h1></h1></span>
+      <div>
       <form onSubmit={formSubmission}>
         <ToastContainer
           position="top-center"
@@ -92,7 +96,10 @@ const Login = () => {
           variant="outlined"
           color="secondary"
           type="email"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+                border: '1px, solid, white',
+                borderRadius: '10px',
+                backgroundColor: 'rgb(240, 240, 240)' }}
           size='medium'
           value={email}
 
@@ -105,17 +112,32 @@ const Login = () => {
           color="secondary"
           type="password"
           value={password}
-
           size='medium'
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, 
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)'}}
         />
-        <div>
-          <Button variant="outlined" color="secondary" type="submit">Log In</Button>
-          <Button variant="outlined" color="secondary" onClick={() => setSignup(true)} type="button">SignUp</Button>
+        <div className='loginSignupButtons'>
+          <Button variant="outlined" 
+                  color="secondary" 
+                  type="submit"
+                  sx={{ color: '#9c27b0)',
+                        backgroundColor: 'rgb(240, 240, 240)'}}>
+                  Log In </Button>
+          <Button variant="outlined" 
+                  color="secondary" 
+                  onClick={() => setSignup(true)} 
+                  type="button"
+                  sx={{ color: 'rgb(240, 240, 240)',
+                        backgroundColor: '#9c27b0'}}>
+                  SignUp</Button>
         </div>
       </form>
       {signup && <Navigate to="/signup" />}
       {submitSuccess && <Navigate to="/homepage" />}
+      </div>
+    </div>
     </div>
   );
 };

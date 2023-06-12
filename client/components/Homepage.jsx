@@ -53,7 +53,7 @@ useEffect(()=>{
 
 
   return (
-    <div>
+    <div className='homepage'>
       <h1>Homepage</h1>
       <div className='container'>
         <UserProfile />

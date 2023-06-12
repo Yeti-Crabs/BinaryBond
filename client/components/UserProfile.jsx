@@ -79,7 +79,7 @@ const UserProfile = () => {
 
 
   return (
-    <div>
+    <div id='userProfile'>
       <div>
         <div>
           <img src="https://iili.io/H6JgbMx.webp" style={{ width: '100px', height: '100px' }} alt="" />
@@ -125,25 +125,24 @@ const UserProfile = () => {
         </div>
         <div>
           <div>
-            <h2>{name}</h2>
+            <h3>{name}</h3>
           </div>
-          <div>
-            <h3>Email</h3>
-            <h5>{user.email}</h5>
+          <div className='userInfo'>
+            <h4>Email: </h4>
+            <h4>{user.email}</h4>
           </div>
-          <div>
-            <h3>Bio</h3>
+          <div className='userInfo'>
+            <h3>Bio:</h3>
             <h5>{user.bio}</h5>
           </div>
-          <div>
-            <h3>Subjects</h3>
+          <div className='userInfo'>
+            <h3>Subjects:</h3>
             <h5>{user.subjects}</h5>
-            <h3>Skill level</h3>
-            <h5>{user.skilllevel}</h5>
+            <h3>Skill level: {user.skilllevel}</h3>
           </div>
         </div>
-        <div>
-          <Button variant="contained" onClick={logout} >Logout</Button>
+        <div id='logoutDelete'>
+          <Button id='logout' variant="contained" onClick={logout} >Logout</Button>
           <Button variant="contained" onClick={deleteUser} color="error">Delete Profile</Button>
           {logdel && <Navigate to="/" />}
         </div>
