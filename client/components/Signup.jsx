@@ -20,7 +20,7 @@ const Signup = () => {
   // Redirect user to 
   const formSubmission = async (event) => {
     event.preventDefault()
-    const body = {firstName, lastName, bio, subject, email, password, skillLevel}
+    const body = { firstName, lastName, bio, subject, email, password, skillLevel }
     try {
       const response = await fetch('/api/', {
         method: 'POST',
@@ -40,95 +40,95 @@ const Signup = () => {
 
   return (
     <div>
-    <h1>Signup</h1>
-    <form onSubmit={formSubmission}>
-    <TextField
-            label="First Name"
-            onChange={e => setFirstName(e.target.value)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="text"
-            sx={{ mb: 3 }}
-            size='medium'
-            value={firstName}
+      <h1>Signup</h1>
+      <form onSubmit={formSubmission}>
+        <TextField
+          label="First Name"
+          onChange={e => setFirstName(e.target.value)}
+          required
+          variant="outlined"
+          color="secondary"
+          type="text"
+          sx={{ mb: 3 }}
+          size='medium'
+          value={firstName}
 
-          />
-    <TextField
-            label="Last Name"
-            onChange={e => setLastName(e.target.value)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="text"
-            sx={{ mb: 3 }}
-            size='medium'
-            value={lastName}
+        />
+        <TextField
+          label="Last Name"
+          onChange={e => setLastName(e.target.value)}
+          required
+          variant="outlined"
+          color="secondary"
+          type="text"
+          sx={{ mb: 3 }}
+          size='medium'
+          value={lastName}
 
-          />
-    
-    <TextField
-            label="Email"
-            onChange={e => setEmail(e.target.value)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="email"
-            sx={{ mb: 3 }}
-            size='medium'
-            value={email}
+        />
 
-          />
-          <TextField
-            label="Password"
-            onChange={e => setPassword(e.target.value)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="password"
-            value={password}
+        <TextField
+          label="Email"
+          onChange={e => setEmail(e.target.value)}
+          required
+          variant="outlined"
+          color="secondary"
+          type="email"
+          sx={{ mb: 3 }}
+          size='medium'
+          value={email}
 
-            size='medium'
-            sx={{ mb: 3 }}
-          />
-          <TextField
-            label="Subject"
-            onChange={e => setSubject(e.target.value)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="text"
-            sx={{ mb: 3 }}
-            size='medium'
-            value={subject}
+        />
+        <TextField
+          label="Password"
+          onChange={e => setPassword(e.target.value)}
+          required
+          variant="outlined"
+          color="secondary"
+          type="password"
+          value={password}
 
-          />
-          <TextField
-            label="Bio"
-            onChange={e => setBio(e.target.value)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="text"
-            sx={{ mb: 3 }}
-            size='medium'
-            value={bio}
-          />
-          <Slider
-            aria-label="skill Level"
-            defaultValue={1}
-            //getAriaValueText={valuetext}
-            onChange={e => setSkillLevel(e.target.value)}
-            value={skillLevel}
-            valueLabelDisplay="auto"
-            step={1}
-            marks
-            min={1}
-            max={5}
-            />
-           <Button variant="outlined" color="secondary" type="submit">Submit</Button>
-    </form>
-    {submitSuccess && <Navigate to="/" />  }
+          size='medium'
+          sx={{ mb: 3 }}
+        />
+        <TextField
+          label="Subject"
+          onChange={e => setSubject(e.target.value)}
+          required
+          variant="outlined"
+          color="secondary"
+          type="text"
+          sx={{ mb: 3 }}
+          size='medium'
+          value={subject}
+
+        />
+        <TextField
+          label="Bio"
+          onChange={e => setBio(e.target.value)}
+          required
+          variant="outlined"
+          color="secondary"
+          type="text"
+          sx={{ mb: 3 }}
+          size='medium'
+          value={bio}
+        />
+        <Slider
+          aria-label="skill Level"
+          defaultValue={1}
+          //getAriaValueText={valuetext}
+          onChange={e => setSkillLevel(e.target.value)}
+          value={skillLevel}
+          valueLabelDisplay="auto"
+          step={1}
+          marks
+          min={1}
+          max={5}
+        />
+        <Button variant="outlined" color="secondary" type="submit">Submit</Button>
+      </form>
+      {submitSuccess && <Navigate to="/" />}
     </div>
   )
 }
