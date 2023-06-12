@@ -18,7 +18,7 @@ router.delete('/home/requests', homepageController.deleteRequest, (req, res) => 
     res.status(200).json({ msg: 'Request deleted'})
 })
 
-router.get('/home', homepageController.getAllUsers, (req, res) => {
+router.post('/home/getallusers', homepageController.getAllUsers, (req, res) => {
     res.status(200).json(res.locals.users)
 })
 
