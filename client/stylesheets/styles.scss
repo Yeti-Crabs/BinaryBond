@@ -72,9 +72,14 @@ body {
 .container{
     display: grid;
     background-color: lighten($background, 10%);
-    border:1px solid rgb(168, 0, 146);
-    grid-template-columns: .18fr .90fr .14fr;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    // border:1px solid rgb(168, 0, 146);
+    grid-template-columns: .18fr .90fr .18fr;
     height: 45rem;
+}
+
+#partnerCards {
+  min-width: 75rem;
 }
 
 .cards {
@@ -87,7 +92,12 @@ body {
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 60rem;
+  min-width: 50rem;
   height: 35rem;
+  margin: -5rem 5rem 0 5rem;
+  .cardBio {
+    padding: 5rem;
+  }
 }
 
 #userProfile {
@@ -106,6 +116,11 @@ body {
     overflow-y: hidden;
     .userInfo {
       margin-bottom: -10%;
+      #bio {
+        max-height: 10rem;
+        overflow-y: auto;
+        scrollbar-width: 0px;
+      }
     }
     
     }
@@ -129,6 +144,8 @@ body {
   }
 
 #requests {
+  box-shadow: rgba(44, 44, 44, 0.25) 0px 30px 60px -12px inset, rgb(0, 0, 0) 0px 18px 36px -10px inset;
+  padding-left: 1rem;
   #incomingRequests {
     overflow-y: scroll;
     height: 20rem;
@@ -138,9 +155,6 @@ body {
     overflow-x: hidden;
     height: 20rem;
 
-  }
-  #outgoingdiv {
-    // overflow-y: scroll;
   }
 }
 
@@ -154,5 +168,3 @@ body {
 h3 {
   margin-bottom: -1rem;
 }
-
-

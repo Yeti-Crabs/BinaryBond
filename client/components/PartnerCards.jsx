@@ -40,7 +40,7 @@ const PartnerCards = () => {
   const users = allusers.map((user, i) => <div key={i}><Card key={i} {...user} /></div>)
 
   return (
-    <div>
+    <div id='partnerCards'>
       <AwesomeSlider animation="cubeAnimation">
 
         {users}

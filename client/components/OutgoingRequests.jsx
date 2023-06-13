@@ -10,7 +10,7 @@ const OutgoingRequests = ({ requests }) => {
   return (
     <div id='outgoingRequests'>
       <h2>Outgoing Requests</h2>
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'secondary.main',borderRadius: '16px' }}>
           {requests.map((request, i)=><RequestCard key={i} {...request}/>)}
         </List>
     </div>

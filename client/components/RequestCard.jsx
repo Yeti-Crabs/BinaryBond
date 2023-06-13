@@ -15,7 +15,7 @@ const RequestCard = ({ email, firstname, lastname, user_id, subjects, request_id
   const user = useSelector((state) => state.user)
 
   const displayDeleteRequest = () => {
-    toast.success('😈 Successfull Delete😈 ', {
+    toast.success('😈 Successful Delete 😈', {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: false,

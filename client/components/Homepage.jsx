@@ -54,7 +54,7 @@ useEffect(()=>{
 
   return (
     <div className='homepage'>
-      <span><h1 id='title'>Binary<h1 id='bond'>Bond</h1></h1></span>
+      <span className='shadow-pop-tr'><h1 id='title'>Binary<h1 id='bond'>Bond</h1></h1></span>
       <div className='container'>
         
         <UserProfile />

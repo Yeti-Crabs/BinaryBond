@@ -21,7 +21,7 @@ const Login = () => {
   const [signup, setSignup] = useState(false)
 
   const displayNotification = () => {
-    toast.success('🦀 🦀 🦀 🦀 Succesfull Login!!🦀 🦀 🦀 🦀 ', {
+    toast.success('🦀 Succesfull Login!! 🦀', {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: false,
