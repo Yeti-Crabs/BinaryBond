@@ -113,7 +113,7 @@ const UserProfile = () => {
     <div id='userProfile'>
       <div>
         <div>
-          <img src="https://iili.io/H6JgbMx.webp" style={{ width: '100px', height: '100px' }} alt="" />
+        <a href="https://freeimage.host/"><img src="https://iili.io/H6qbG2V.jpg" alt="H6qbG2V.jpg" border="0" /></a>
           <IconButton style={{ width: '30px', height: '30px' }} onClick={handleClickOpen}>
             <EditIcon />
           </IconButton>
@@ -164,7 +164,7 @@ const UserProfile = () => {
           </div>
           <div className='userInfo'>
             <h3>Bio:</h3>
-            <p>{user.bio}</p>
+            <p id='bio'>{user.bio}</p>
           </div>
           <div className='userInfo'>
             <h3>Subjects:</h3>
