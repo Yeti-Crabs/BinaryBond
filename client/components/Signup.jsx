@@ -29,20 +29,26 @@ const Signup = () => {
     });
   };
 
-
-
   // Send a post request to DB
-  // Redirect user to 
+  // Redirect user to
   const formSubmission = async (event) => {
     event.preventDefault();
-    const body = { firstName, lastName, bio, subject, email, password, skillLevel };
+    const body = {
+      firstName,
+      lastName,
+      bio,
+      subject,
+      email,
+      password,
+      skillLevel,
+    };
     try {
       const response = await fetch('/api/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       });
       if (response.ok) {
         displayNotification();
@@ -59,7 +65,7 @@ const Signup = () => {
   return (
     <div className='signUpPage'>
       <ToastContainer
-        position="top-center"
+        position='top-center'
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -68,121 +74,116 @@ const Signup = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme='light'
       />
       <h1>Signup</h1>
       <form id='signUpFields' onSubmit={formSubmission}>
         <TextField
-          label="First Name"
-          onChange={e => setFirstName(e.target.value)}
+          label='First Name'
+          onChange={(e) => setFirstName(e.target.value)}
           required
-          variant="outlined"
-          color="secondary"
-          type="text"
-          sx={{
-            mb: 3,
-            border: '1px, solid, white',
-            borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'
-          }}
-          size='medium'
-          value={firstName}
-
-        />
-        <TextField
-          label="Last Name"
-          onChange={e => setLastName(e.target.value)}
-          required
-          variant="outlined"
-          color="secondary"
-          type="text"
-          sx={{
-            mb: 3,
-            border: '1px, solid, white',
-            borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'
-          }}
-          size='medium'
-          value={lastName}
-
-        />
-
-        <TextField
-          label="Email"
-          onChange={e => setEmail(e.target.value)}
-          required
-          variant="outlined"
-          color="secondary"
-          type="email"
-          sx={{
-            mb: 3,
-            border: '1px, solid, white',
-            borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'
-          }}
-          size='medium'
-          value={email}
-
-        />
-        <TextField
-          label="Password"
-          onChange={e => setPassword(e.target.value)}
-          required
-          variant="outlined"
-          color="secondary"
-          type="password"
-          value={password}
-
-          size='medium'
-          sx={{
-            mb: 3,
-            border: '1px, solid, white',
-            borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'
-          }}
-        />
-        <TextField
-          label="Subject"
-          onChange={e => setSubject(e.target.value)}
-          required
-          variant="outlined"
-          color="secondary"
-          type="text"
-          sx={{
-            mb: 3,
-            border: '1px, solid, white',
-            borderRadius: '10px',
-            backgroundColor: 'rgb(240, 240, 240)'
-          }}
-          size='medium'
-          value={subject}
-
-        />
-        <TextField
-          id="outlined-multiline-static"
-          label="Bio"
-          onChange={e => setBio(e.target.value)}
-          required
-          multiline
-          variant="outlined"
-          color="secondary"
-          type="text"
+          variant='outlined'
+          color='secondary'
+          type='text'
           sx={{
             mb: 3,
             border: '1px, solid, white',
             borderRadius: '10px',
             backgroundColor: 'rgb(240, 240, 240)',
-            }}
+          }}
+          size='medium'
+          value={firstName}
+        />
+        <TextField
+          label='Last Name'
+          onChange={(e) => setLastName(e.target.value)}
+          required
+          variant='outlined'
+          color='secondary'
+          type='text'
+          sx={{
+            mb: 3,
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)',
+          }}
+          size='medium'
+          value={lastName}
+        />
+
+        <TextField
+          label='Email'
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          variant='outlined'
+          color='secondary'
+          type='email'
+          sx={{
+            mb: 3,
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)',
+          }}
+          size='medium'
+          value={email}
+        />
+        <TextField
+          label='Password'
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          variant='outlined'
+          color='secondary'
+          type='password'
+          value={password}
+          size='medium'
+          sx={{
+            mb: 3,
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)',
+          }}
+        />
+        <TextField
+          label='Subject'
+          onChange={(e) => setSubject(e.target.value)}
+          required
+          variant='outlined'
+          color='secondary'
+          type='text'
+          sx={{
+            mb: 3,
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)',
+          }}
+          size='medium'
+          value={subject}
+        />
+        <TextField
+          id='outlined-multiline-static'
+          label='Bio'
+          onChange={(e) => setBio(e.target.value)}
+          required
+          multiline
+          variant='outlined'
+          color='secondary'
+          type='text'
+          sx={{
+            mb: 3,
+            border: '1px, solid, white',
+            borderRadius: '10px',
+            backgroundColor: 'rgb(240, 240, 240)',
+          }}
           size='medium'
           value={bio}
         />
         <Slider
-          aria-label="skill Level"
+          aria-label='skill Level'
           defaultValue={1}
           //getAriaValueText={valuetext}
-          onChange={e => setSkillLevel(e.target.value)}
+          onChange={(e) => setSkillLevel(e.target.value)}
           value={skillLevel}
-          valueLabelDisplay="auto"
+          valueLabelDisplay='auto'
           step={1}
           marks
           min={1}
@@ -192,16 +193,18 @@ const Signup = () => {
           }}
         />
         <Button
-          variant="outlined"
-          color="secondary"
-          type="submit"
+          variant='outlined'
+          color='secondary'
+          type='submit'
           sx={{
             color: 'rgb(240, 240, 240)',
-            backgroundColor: '#9c27b0'
-          }}>
-          Submit</Button>
+            backgroundColor: '#9c27b0',
+          }}
+        >
+          Submit
+        </Button>
       </form>
-      {submitSuccess && <Navigate to="/" />}
+      {submitSuccess && <Navigate to='/' />}
     </div>
   );
 };
