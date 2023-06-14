@@ -8,16 +8,16 @@ const initialState = {
   bio: 'toolkit demo bio',
   subjects: 'toolkit demo sub',
   email: 'toolkit demo@gmail.com',
-  skilllevel: '5'
+  skilllevel: '5',
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // login and update are action creators 
+    // login and update are action creators
     login: (state, action) => {
-      // overwrite state with action payload 
+      // overwrite state with action payload
       return { ...state, ...action.payload };
     },
     update: (state, action) => {

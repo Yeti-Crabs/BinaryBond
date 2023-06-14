@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -72,7 +71,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './client/index.html',
-    }), new MiniCssExtractPlugin()
+    }),
+    new MiniCssExtractPlugin(),
   ],
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
