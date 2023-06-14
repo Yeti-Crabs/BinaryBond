@@ -12,7 +12,8 @@ import { useState } from 'react';
 import { update, login } from '../store/userSlice';
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import Calendar from './Calendar';
+// import Calendar from './Calendar';
+import Calendar3 from './Calendar3';
 
 const UserProfile = () => {
   const user = useSelector((state) => state.user);
@@ -176,7 +177,6 @@ const UserProfile = () => {
             <p>{user.subjects}</p>
             <h3>Skill level: {user.skilllevel}</h3>
           </div>
-          <Calendar />
         </div>
       </div>
       <div id='logoutDelete'>

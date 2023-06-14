@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const homepageController = require('../controllers/homepageController');
 
 // Default /api in server
-router.post('/', (req, res, next) => {
-  res.status(201).json({ msg: 'Request created' });
-  next();
+
+router.post('/create-tokens', async (req, res, next) => {
   try {
+    const { code } = req.body;
+    res.send(code);
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,7 @@ const homepageRouter = require('./routes/homepage');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
 
 app.get('/', (req, res) => {
   return res
