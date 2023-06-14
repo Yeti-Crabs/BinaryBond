@@ -5,17 +5,18 @@ const app = express();
 const PORT = 3000;
 
 const loginRouter = require('./routes/login.js');
-const homepageRouter = require('./routes/homepage')
+const homepageRouter = require('./routes/homepage');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+  return res
+    .status(200)
+    .sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
-// routers for login page and homepage 
+// routers for login page and homepage
 app.use('/api', loginRouter, homepageRouter);
 
 app.use((err, req, res, next) => {
