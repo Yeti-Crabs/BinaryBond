@@ -4,6 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 const Calendar = () => {
   const responseGoogle = (response) => {
     console.log(response);
+    // const code =
   };
 
   const responseError = (error) => {

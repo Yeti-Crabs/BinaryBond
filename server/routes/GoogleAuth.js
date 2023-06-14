@@ -7,7 +7,9 @@ router.post('/', (req, res, next) => {
   res.status(201).json({ msg: 'Request created' });
   next();
   try {
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
