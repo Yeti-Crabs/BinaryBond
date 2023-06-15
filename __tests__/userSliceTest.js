@@ -16,22 +16,22 @@ describe('userSlice', () => {
       initialState,
       login({
         user_id: '111',
-        firstname: 'Kwon123',
-        lastname: 'Kwon123',
-        bio: 'New Kwon123 Bio',
-        subjects: 'New Kwon123 subjects',
-        email: 'Kwon123@gmail.com',
+        firstname: 'User123',
+        lastname: 'User123',
+        bio: 'New User123 Bio',
+        subjects: 'New User123 subjects',
+        email: 'User123@gmail.com',
         skilllevel: '1',
       })
     );
 
     expect(newState).toEqual({
       user_id: '111',
-      firstname: 'Kwon123',
-      lastname: 'Kwon123',
-      bio: 'New Kwon123 Bio',
-      subjects: 'New Kwon123 subjects',
-      email: 'Kwon123@gmail.com',
+      firstname: 'User123',
+      lastname: 'User123',
+      bio: 'New User123 Bio',
+      subjects: 'New User123 subjects',
+      email: 'User123@gmail.com',
       skilllevel: '1',
     });
   });
@@ -39,8 +39,8 @@ describe('userSlice', () => {
   it('should handle update', () => {
     const initialState = {
       user_id: '111',
-      firstname: 'Kwon123',
-      lastname: 'Kwon123',
+      firstname: 'User123',
+      lastname: 'User123',
       bio: '',
       subjects: '',
       email: '',
@@ -50,17 +50,17 @@ describe('userSlice', () => {
     const newState = userSlice.reducer(
       initialState,
       update({
-        bio: 'New Kwon123 bio',
-        subjects: 'New Kwon123 subjects',
+        bio: 'New User123 bio',
+        subjects: 'New User123 subjects',
       })
     );
 
     expect(newState).toEqual({
       user_id: '111',
-      firstname: 'Kwon123',
-      lastname: 'Kwon123',
-      bio: 'New Kwon123 bio',
-      subjects: 'New Kwon123 subjects',
+      firstname: 'User123',
+      lastname: 'User123',
+      bio: 'New User123 bio',
+      subjects: 'New User123 subjects',
       email: '',
       skilllevel: '',
     });
