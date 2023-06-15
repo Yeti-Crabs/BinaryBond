@@ -12,13 +12,15 @@ import { useState } from 'react';
 import { update, login } from '../store/userSlice';
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
+import ProfilePic from './ProfilePic';
 
 const UserProfile = () => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
   const [bio, setBio] = useState('')
-  const [subjects, setSubjects] = useState('')
+  const [subject, setSubject] = useState('')
+  const [profileurl, setProfileurl] = useState('https://iili.io/H6qbG2V.jpg');
   const [logdel, setlogdel] = useState(false)
 
   const displayEdit = () => {
@@ -113,7 +115,7 @@ const UserProfile = () => {
     <div id='userProfile'>
       <div>
         <div>
-        <a href="https://freeimage.host/"><img src="https://iili.io/H6qbG2V.jpg" alt="H6qbG2V.jpg" border="0" /></a>
+          <img src={user.profileurl} style={{ width: '100px', height: '100px' }} alt="Profile picture" border="0" />
           <IconButton style={{ width: '30px', height: '30px' }} onClick={handleClickOpen}>
             <EditIcon />
           </IconButton>
@@ -137,17 +139,24 @@ const UserProfile = () => {
                 />
                 <TextField
                   margin="dense"
-                  onChange={e => setSubjects(e.target.value)}
+                  onChange={e => setSubject(e.target.value)}
                   id="subjects"
                   label="Subjects"
                   type="text"
                   fullWidth
                   variant="standard"
-                  value={subjects}
+                  value={subject}
                 />
+                <DialogContentText>
+                  Upload Profile Picture
+                </DialogContentText>
 
               </DialogContent>
               <DialogActions>
+                <ProfilePic
+                  label="Picture"
+                  onChange={e => setProfileurl(setProfileurl)}
+                  value={profileurl} />
                 <Button onClick={handleClose}>Cancel</Button>
                 <Button onClick={handleClose} type='submit'>Done</Button>
               </DialogActions>
@@ -168,16 +177,18 @@ const UserProfile = () => {
           </div>
           <div className='userInfo'>
             <h3>Subjects:</h3>
-            <p>{user.subjects}</p>
+            <p>{user.subject}</p>
+          </div>
+          <div className='userInfo'>
             <h3>Skill level: {user.skilllevel}</h3>
           </div>
         </div>
       </div>
       <div id='logoutDelete'>
-          <Button id='logout' variant="contained" onClick={logout} >Logout</Button>
-          <Button id='delete' variant="contained" onClick={deleteUser} color="error">Delete Profile</Button>
-          {logdel && <Navigate to="/" />}
-        </div>
+        <Button id='logout' variant="contained" onClick={logout} >Logout</Button>
+        <Button id='delete' variant="contained" onClick={deleteUser} color="error">Delete Profile</Button>
+        {logdel && <Navigate to="/" />}
+      </div>
     </div>
   )
 }
