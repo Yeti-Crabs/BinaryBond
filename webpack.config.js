@@ -31,8 +31,9 @@ module.exports = {
     historyApiFallback: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
       // 'Cross-Origin-Opener-Policy': 'same-origin',
-      // 'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Embedder-Policy': 'credentialless',
     },
     // Represents express server
     proxy: {
