@@ -162,8 +162,8 @@ const UserProfile = () => {
             </form>
           </Dialog>
         </div>
-        <div>
-          <div>
+        <div className="biobox">
+          <div className="biobox">
             <h2>{name}</h2>
           </div>
           <div className='userInfo'>
