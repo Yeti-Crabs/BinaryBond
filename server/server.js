@@ -10,7 +10,7 @@ const homepageRouter = require('./routes/homepage');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors());
+app.use(cors());
 
 app.get('/', (req, res) => {
   return res
