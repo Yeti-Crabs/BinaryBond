@@ -10,13 +10,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Button, IconButton } from '@mui/material';
 import { useState } from 'react';
 import { update, login } from '../store/userSlice';
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import ProfilePic from './ProfilePic';
 
 const UserProfile = () => {
-  const user = useSelector((state) => state.user)
-  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [bio, setBio] = useState('')
   const [subject, setSubject] = useState('')
@@ -38,24 +38,23 @@ const UserProfile = () => {
 
   const displayDelete = () => {
     toast.error('😿 User Deleted😿 ', {
-      position: "top-center",
+      position: 'top-center',
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: 'dark',
     });
-  }
+  };
 
-
-  console.log(user)
-  const name = user.firstname + ' ' + user.lastname
+  console.log(user);
+  const name = user.firstname + ' ' + user.lastname;
 
   const logout = () => {
-    setlogdel(true)
-  }
+    setlogdel(true);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -66,50 +65,47 @@ const UserProfile = () => {
   };
 
   const editProfile = async (event) => {
-    event.preventDefault() // <--- !IMPORTANT!
-    const body = { user_id: user.user_id, bio, subjects }
+    event.preventDefault(); // <--- !IMPORTANT!
+    const body = { user_id: user.user_id, bio, subjects };
     try {
       const response = await fetch('/api/home', {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       });
       if (response.ok) {
-        displayEdit()
-        console.log('Data updated successfully')
+        displayEdit();
+        console.log('Data updated successfully');
       }
-      dispatch(update(body))
+      dispatch(update(body));
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-      console.log(error)
-    }
-  }
+  };
 
   const deleteUser = async () => {
-    const body = { user_id: user.user_id }
+    const body = { user_id: user.user_id };
     try {
       const response = await fetch('/api/home', {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       });
       if (response.ok) {
-        displayDelete()
+        displayDelete();
         setTimeout(() => {
           setlogdel(true);
         }, 3000);
-        console.log('User deleted successfully')
+        console.log('User deleted successfully');
       }
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-      console.log(error)
-    }
-  }
-
+  };
 
   return (
     <div id='userProfile'>
@@ -123,18 +119,16 @@ const UserProfile = () => {
             <DialogTitle>Edit Profile</DialogTitle>
             <form onSubmit={editProfile}>
               <DialogContent>
-                <DialogContentText>
-                  Edit Your Subjects or Bio
-                </DialogContentText>
+                <DialogContentText>Edit Your Subjects or Bio</DialogContentText>
                 <TextField
                   autoFocus
-                  onChange={e => setBio(e.target.value)}
-                  margin="dense"
-                  id="bio"
-                  label="Bio"
-                  type="text"
+                  onChange={(e) => setBio(e.target.value)}
+                  margin='dense'
+                  id='bio'
+                  label='Bio'
+                  type='text'
                   fullWidth
-                  variant="standard"
+                  variant='standard'
                   value={bio}
                 />
                 <TextField
@@ -158,7 +152,9 @@ const UserProfile = () => {
                   onChange={e => setProfileurl(setProfileurl)}
                   value={profileurl} />
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose} type='submit'>Done</Button>
+                <Button onClick={handleClose} type='submit'>
+                  Done
+                </Button>
               </DialogActions>
             </form>
           </Dialog>
@@ -185,12 +181,20 @@ const UserProfile = () => {
         </div>
       </div>
       <div id='logoutDelete'>
-        <Button id='logout' variant="contained" onClick={logout} >Logout</Button>
-        <Button id='delete' variant="contained" onClick={deleteUser} color="error">Delete Profile</Button>
-        {logdel && <Navigate to="/" />}
+        <Button id='logout' variant='contained' onClick={logout}>
+          Logout
+        </Button>
+        <Button
+          id='delete'
+          variant='contained'
+          onClick={deleteUser}
+          color='error'
+        >
+          Delete Profile
+        </Button>
+        {logdel && <Navigate to='/' />}
       </div>
     </div>
-  )
-}
-export default UserProfile
-
+  );
+};
+export default UserProfile;
