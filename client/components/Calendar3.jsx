@@ -47,8 +47,10 @@ const Calendar3 = () => {
               <p>Schedule your Pair Programming Session</p>
               <DateTimePicker onChange={setStart} value={start} />
               <p>End Session</p>
-              <DateTimePicker onChange={setEnd} value={end} />
-              <button onClick={() => signOut()}>Sign Out</button>
+              <div>
+                <DateTimePicker onChange={setEnd} value={end} />
+                <button onClick={() => signOut()}>Sign Out</button>
+              </div>
             </>
           ) : (
             <>
