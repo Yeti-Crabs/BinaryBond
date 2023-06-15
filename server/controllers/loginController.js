@@ -10,12 +10,14 @@ loginController.signUp = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password } = req.body;
     const bio = req.body.bio.replace("'", "''");
-    const subject = req.body.subject.replace("'", "''");
+    const subjects = req.body.subjects.replace("'", "''");
     const skillLevel = Number(req.body.skillLevel);
-    const string = `INSERT INTO users (firstname, lastname, bio, subject, email, password, skilllevel) VALUES ('${firstName}', '${lastName}', '${bio}', '${subject}', '${email}', '${password}', ${skillLevel})`;
-    const response = await db.query(string);
+    const profileurl = req.body.profileurl;
+    const string = `INSERT INTO users (firstName, lastName, bio, subject, email, password, skillLevel, profileurl) VALUES ('${firstName}', '${lastName}', '${bio}', '${subjects}', '${email}', '${password}', '${skillLevel}', '${profileurl}')`;
+    await db.query(string);
     return next();
   } catch (error) {
+    console.error(error);
     next({
       log: 'Express error handler caught error in signup middleware',
       status: 400,

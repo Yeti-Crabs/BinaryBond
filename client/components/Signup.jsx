@@ -5,6 +5,8 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import ProfilePic from './ProfilePic';
+
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -12,8 +14,9 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [bio, setBio] = useState('');
-  const [subject, setSubject] = useState('');
+  const [subjects, setSubjects] = useState('');
   const [skillLevel, setSkillLevel] = useState(1);
+  const [profileurl, setProfileurl] = useState('https://iili.io/H6qbG2V.jpg');
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const displayNotification = () => {
@@ -33,15 +36,8 @@ const Signup = () => {
   // Redirect user to
   const formSubmission = async (event) => {
     event.preventDefault();
-    const body = {
-      firstName,
-      lastName,
-      bio,
-      subject,
-      email,
-      password,
-      skillLevel,
-    };
+    const body = { firstName, lastName, bio, subjects, email, password, skillLevel, profileurl };
+    
     try {
       const response = await fetch('/api/', {
         method: 'POST',
@@ -60,6 +56,11 @@ const Signup = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleProfileImageChange = (image) => {
+    const downloadURL = image.downloadURL;
+    setProfileurl(downloadURL);
   };
 
   return (
@@ -144,8 +145,8 @@ const Signup = () => {
           }}
         />
         <TextField
-          label='Subject'
-          onChange={(e) => setSubject(e.target.value)}
+          label="Subject"
+          onChange={e => setSubjects(e.target.value)}
           required
           variant='outlined'
           color='secondary'
@@ -157,7 +158,8 @@ const Signup = () => {
             backgroundColor: 'rgb(240, 240, 240)',
           }}
           size='medium'
-          value={subject}
+          value={subjects}
+
         />
         <TextField
           id='outlined-multiline-static'
@@ -192,6 +194,11 @@ const Signup = () => {
             width: 300,
           }}
         />
+        <ProfilePic 
+          label="Picture"
+          onChange={setProfileurl}
+          value={profileurl}
+          />
         <Button
           variant='outlined'
           color='secondary'

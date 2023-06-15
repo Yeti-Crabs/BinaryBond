@@ -12,16 +12,16 @@ import { useState } from 'react';
 import { update, login } from '../store/userSlice';
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-// import Calendar from './Calendar';
-import Calendar3 from './Calendar3';
+import ProfilePic from './ProfilePic';
 
 const UserProfile = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [bio, setBio] = useState('');
-  const [subjects, setSubjects] = useState('');
-  const [logdel, setlogdel] = useState(false);
+  const [bio, setBio] = useState('')
+  const [subject, setSubject] = useState('')
+  const [profileurl, setProfileurl] = useState('https://iili.io/H6qbG2V.jpg');
+  const [logdel, setlogdel] = useState(false)
 
   const displayEdit = () => {
     toast.success('🙂  Succesfull Edit!! 🙂 ', {
@@ -111,17 +111,8 @@ const UserProfile = () => {
     <div id='userProfile'>
       <div>
         <div>
-          <a href='https://freeimage.host/'>
-            <img
-              src='https://iili.io/H6qbG2V.jpg'
-              alt='H6qbG2V.jpg'
-              border='0'
-            />
-          </a>
-          <IconButton
-            style={{ width: '30px', height: '30px' }}
-            onClick={handleClickOpen}
-          >
+          <img src={user.profileurl} style={{ width: '100px', height: '100px' }} alt="Profile picture" border="0" />
+          <IconButton style={{ width: '30px', height: '30px' }} onClick={handleClickOpen}>
             <EditIcon />
           </IconButton>
           <Dialog open={open} onClose={handleClose}>
@@ -141,17 +132,25 @@ const UserProfile = () => {
                   value={bio}
                 />
                 <TextField
-                  margin='dense'
-                  onChange={(e) => setSubjects(e.target.value)}
-                  id='subjects'
-                  label='Subjects'
-                  type='text'
+                  margin="dense"
+                  onChange={e => setSubject(e.target.value)}
+                  id="subjects"
+                  label="Subjects"
+                  type="text"
                   fullWidth
-                  variant='standard'
-                  value={subjects}
+                  variant="standard"
+                  value={subject}
                 />
+                <DialogContentText>
+                  Upload Profile Picture
+                </DialogContentText>
+
               </DialogContent>
               <DialogActions>
+                <ProfilePic
+                  label="Picture"
+                  onChange={e => setProfileurl(setProfileurl)}
+                  value={profileurl} />
                 <Button onClick={handleClose}>Cancel</Button>
                 <Button onClick={handleClose} type='submit'>
                   Done
@@ -174,7 +173,9 @@ const UserProfile = () => {
           </div>
           <div className='userInfo'>
             <h3>Subjects:</h3>
-            <p>{user.subjects}</p>
+            <p>{user.subject}</p>
+          </div>
+          <div className='userInfo'>
             <h3>Skill level: {user.skilllevel}</h3>
           </div>
         </div>

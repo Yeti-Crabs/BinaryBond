@@ -24,7 +24,7 @@ const PartnerCards = () => {
         console.log('We have got all the users');
       }
     } catch (error) {
-      console.log(error);
+      console.error(error)
     }
   };
   useEffect(() => {
