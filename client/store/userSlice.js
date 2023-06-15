@@ -9,16 +9,16 @@ const initialState = {
   subject: 'toolkit demo sub',
   email: 'toolkit demo@gmail.com',
   skilllevel: '5',
-  profileurl: 'https://iili.io/H6qbG2V.jpg'
+  profileurl: 'https://iili.io/H6qbG2V.jpg',
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // login and update are action creators 
+    // login and update are action creators
     login: (state, action) => {
-      // overwrite state with action payload 
+      // overwrite state with action payload
       return { ...state, ...action.payload };
     },
     update: (state, action) => {
