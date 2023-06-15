@@ -9,13 +9,15 @@ const loginController = {};
 loginController.signUp = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password } = req.body;
-    const bio = req.body.bio.replace('\'', '\'\'');
-    const subject = req.body.subject.replace('\'', '\'\'');
+    const bio = req.body.bio.replace("'", "''");
+    const subjects = req.body.subjects.replace("'", "''");
     const skillLevel = Number(req.body.skillLevel);
-    const string = `INSERT INTO users (firstName, lastName, bio, subjects, email, password, skillLevel) VALUES ('${firstName}', '${lastName}', '${bio}', '${subject}', '${email}', '${password}', ${skillLevel})`;
-    const response = await db.query(string);
+    const profileurl = req.body.profileurl;
+    const string = `INSERT INTO users (firstName, lastName, bio, subject, email, password, skillLevel, profileurl) VALUES ('${firstName}', '${lastName}', '${bio}', '${subjects}', '${email}', '${password}', '${skillLevel}', '${profileurl}')`;
+    await db.query(string);
     return next();
   } catch (error) {
+    console.error(error);
     next({
       log: 'Express error handler caught error in signup middleware',
       status: 400,
@@ -34,12 +36,15 @@ loginController.login = async (req, res, next) => {
     const response = await db.query(string);
     // console.log('i am req.body',req.body)
     // console.log('i am response.rows[0]',response.rows[0])
-    if (email !== response.rows[0].email && password !== response.rows[0].password) {
+    if (
+      email !== response.rows[0].email &&
+      password !== response.rows[0].password
+    ) {
       return next({
         log: `Username or password does not match, ${error}`,
         status: 400,
         message: { err: `Username or password does not match: ${error}` },
-      })
+      });
     }
     res.locals.user = response.rows[0];
     return next();

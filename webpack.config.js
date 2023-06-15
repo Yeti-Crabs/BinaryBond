@@ -29,7 +29,11 @@ module.exports = {
     open: true,
     // fallback to root for other url
     historyApiFallback: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      // 'Cross-Origin-Opener-Policy': 'same-origin',
+      // 'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
     // Represents express server
     proxy: {
       '/api/**': {

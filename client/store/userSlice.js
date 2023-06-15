@@ -6,9 +6,10 @@ const initialState = {
   firstname: 'greg',
   lastname: 'mole',
   bio: 'toolkit demo bio',
-  subjects: 'toolkit demo sub',
+  subject: 'toolkit demo sub',
   email: 'toolkit demo@gmail.com',
   skilllevel: '5',
+  profileurl: 'https://iili.io/H6qbG2V.jpg',
 };
 
 export const userSlice = createSlice({
