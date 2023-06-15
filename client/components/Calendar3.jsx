@@ -10,6 +10,8 @@ import '../stylesheets/styles.scss';
 const Calendar3 = () => {
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
+  const [eventName, setEventName] = useState('');
+  const [eventDescription, setEventDescription] = useState('');
 
   const session = useSession(); //when session exists, we have a user.
   const supabase = useSupabaseClient(); //talk to supabase
@@ -34,23 +36,74 @@ const Calendar3 = () => {
   async function signOut() {
     await supabase.auth.signOut();
   }
+
+  async function createCalendarEvent() {
+    console.log('Creating calendar event');
+    const event = {
+      summary: eventName,
+      description: eventDescription,
+      start: {
+        dateTime: start.toISOString(),
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      },
+      end: {
+        dateTime: end.toISOString(),
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      },
+    };
+    await fetch(
+      'https://www.googleapis.com/calendar/v3/calendars/primary/events',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + session.provider_token,
+        },
+        body: JSON.stringify(event),
+      }
+    )
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert('Event created, check your Google Calendar!');
+      });
+  }
+
   console.log(session);
   console.log(start);
+  console.log(eventName);
+  console.log(eventDescription);
 
   return (
     <div className='calendar3'>
       <div>
-        <div>
+        <div style={{ width: '400px', margin: '30px' }}>
           {session ? (
             <>
               <h2>hey there {session.user.email}</h2>
               <p>Schedule your Pair Programming Session</p>
               <DateTimePicker onChange={setStart} value={start} />
               <p>End Session</p>
-              <div>
-                <DateTimePicker onChange={setEnd} value={end} />
-                <button onClick={() => signOut()}>Sign Out</button>
-              </div>
+              <p>Subject</p>
+              <input
+                type='text'
+                onChange={(e) => setEventName(e.target.value)}
+              />
+              <p>Subject Description</p>
+              <input
+                type='text'
+                onChange={(e) => setEventDescription(e.target.value)}
+              />
+              <hr />
+              <button onClick={() => createCalendarEvent()}>
+                {' '}
+                Create Calendar Event
+              </button>
+              <p></p>
+              <button onClick={() => signOut()}>Sign Out</button>
+              <DateTimePicker onChange={setEnd} value={end} />
+              <button onClick={() => signOut()}>Sign Out</button>
             </>
           ) : (
             <>
