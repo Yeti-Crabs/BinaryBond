@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { IconButton } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 
-const Card = ({ bio, skilllevel, email, firstname, lastname, user_id }) => {
+const Card = ({ bio, skilllevel, email, firstname, lastname, user_id, profileurl }) => {
   const user = useSelector((state) => state.user)
 
   const displayThumbUp = () => {
@@ -66,6 +66,7 @@ const Card = ({ bio, skilllevel, email, firstname, lastname, user_id }) => {
     <div className='cards'>
 
       <h2 className='cardName'>Name: {firstname} {lastname}</h2>
+      <h2 className='cardPic'><img src={profileurl} style={{ width: '100px', height: '100px' }} alt="Profile picture" border="0" /></h2>
       <h3 className='cardEmail'>Email: {email}</h3>
       <h3 className='cardBio'>Bio: {bio}</h3>
       <h1 className='cardSkillLevel'>Skill Level: {skilllevel}</h1>

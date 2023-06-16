@@ -20,11 +20,12 @@ const PartnerCards = () => {
       });
       if (response.ok) {
         const data = await response.json();
+        console.log(data)
         setAllUsers(data);
         console.log('We have got all the users');
       }
     } catch (error) {
-      console.error(error)
+      console.log('poop')
     }
   };
   useEffect(() => {

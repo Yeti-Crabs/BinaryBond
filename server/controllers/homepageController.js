@@ -5,9 +5,9 @@ const homepageController = {};
 ////////////////////////////
 // SELECT all other users //
 homepageController.getAllUsers = async (req, res, next) => {
-  try {3
+  try {
     const { user_id } = req.body;
-    const string = `SELECT user_id, firstName, lastName, bio, subjects, skillLevel, email FROM users WHERE user_id != ${user_id} `;
+    const string = `SELECT user_id, firstName, lastName, bio, subject, skillLevel, email, profileurl FROM users WHERE user_id != ${user_id} `;
     const response = await db.query(string);
     res.locals.users = response.rows;
     return next();
