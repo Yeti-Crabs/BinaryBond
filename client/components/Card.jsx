@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux';
 import { IconButton } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
+
 
 const Card = ({ bio, skilllevel, email, firstname, lastname, user_id }) => {
   const user = useSelector((state) => state.user)

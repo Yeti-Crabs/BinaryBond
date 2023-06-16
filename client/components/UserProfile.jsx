@@ -13,6 +13,10 @@ import { update, login } from '../store/userSlice';
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import ProfilePic from './ProfilePic';
+import Calendar3 from './Calendar3'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 const UserProfile = () => {
   const user = useSelector((state) => state.user);
@@ -22,6 +26,23 @@ const UserProfile = () => {
   const [subject, setSubject] = useState('')
   const [profileurl, setProfileurl] = useState('https://iili.io/H6qbG2V.jpg');
   const [logdel, setlogdel] = useState(false)
+  //NEW, displays calendar
+  const [open2, setOpen2] = React.useState(false);
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
+
+  const style2 = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '500px',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  //
 
   const displayEdit = () => {
     toast.success('🙂  Succesfull Edit!! 🙂 ', {
@@ -180,6 +201,25 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+      {/* //GOOGLE MODAL */}
+      <div>
+      <Button onClick={handleOpen2}>Schedule a pair programming session</Button>
+      <Modal
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style2}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Calendar Login
+          </Typography>
+          <Calendar3 />
+        </Box>
+      </Modal>
+    </div>
+    {/* //MODAL END */}
+
       <div id='logoutDelete'>
         <Button id='logout' variant='contained' onClick={logout}>
           Logout
