@@ -50,13 +50,11 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="homepage">
-      <span className="shadow-pop-tr">
-        <h1 id="title">
-          Binary<h1 id="bond">Bond</h1>
-        </h1>
-      </span>
-      <div className="container">
+
+    <div className='homepage'>
+      <span className='shadow-pop-tr'><div id='title2'>Binary<h1 id='bond'>Bond</h1></div></span>
+      <div className='container'>
+        
         <UserProfile />
         <PartnerCards />
         <div id="requests">

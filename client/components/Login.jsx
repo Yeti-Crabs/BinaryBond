@@ -79,9 +79,9 @@ const Login = () => {
     <div className='loginContainer'>
       <div className='loginPage'>
         <span>
-          <h1 id='title'>
+          <div className='title'>
             Binary<h1 id='bond'>Bond</h1>
-          </h1>
+          </div>
         </span>
         <div>
           <form onSubmit={formSubmission}>
@@ -159,7 +159,6 @@ const Login = () => {
           {submitSuccess && <Navigate to='/homepage' />}
         </div>
       </div>
-      <Calendar3 />
     </div>
   );
 };
