@@ -18,6 +18,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+
+
+
 const UserProfile = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -180,8 +183,8 @@ const UserProfile = () => {
             </form>
           </Dialog>
         </div>
-        <div>
-          <div>
+        <div className="biobox">
+          <div className="biobox">
             <h2>{name}</h2>
           </div>
           <div className='userInfo'>
